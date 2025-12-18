@@ -16,6 +16,8 @@
         .hero{background:#FFD700;color:white;text-align:center;padding:60px 0;}
         .btn{.btn {display: inline-block;background: linear-gradient(90deg, #ff7b00, #ff5500);color: #0a0a0f;padding: 0.8rem 2rem;border-radius: 4px;text-decoration: none;font-weight: bold;border: none;text-transform: uppercase;letter-spacing: 1px;box-shadow: 0 4px 15px rgba(255, 123, 0, 0.4);transition: all 0.3s ease;}
         .btn:hover {background: linear-gradient(90deg, #00eeff, #0099ff);color: #0a0a0f;box-shadow: 0 0 20px #00eeff;transform: translateY(-3px);}
+        .whatsapp-float {position: fixed !important;bottom: 20px !important;right: 20px !important;width: 60px !important;height: 60px !important;border-radius: 50% !important;display: flex !important;align-items: center !important;justify-content: center !important;font-size: 30px !important;box-shadow: 0 4px 15px rgba(255, 123, 0, 0.4) !important;z-index: 1000 !important;a}
+        .whatsapp-float:hover {box-shadow: 0 0 25px #00eeff !important;transform: scale(1.1) !important;}
         .section-title{text-align:center;margin-bottom:40px;color:#2c3e50;}
         .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
         .service-card{ background: linear-gradient(145deg, #1a1a2a, #2a2a3a);border-radius: 8px;padding: 2rem;text-align: center;box-shadow: 0 8px 20px rgba(0,0,0,0.6);transition: all 0.3s ease;border: 1px solid #333;color: #a0a0a0;}
@@ -36,27 +38,17 @@
 <script>
 // WhatsApp flutuante
 const whatsappBtn = document.createElement('a');
-whatsappBtn.href = 'https://wa.me/258846665748?text=Olá Sidney!';
+whatsappBtn.href = 'https://wa.me/258846665748?text=Olá Sidney! Gostaria de informações sobre serviços da CLBA Auto.';
+whatsappBtn.className = 'btn whatsapp-float'; // USA AS CLASSES CSS
 whatsappBtn.innerHTML = '💬';
-whatsappBtn.style.position = 'fixed';
-whatsappBtn.style.bottom = '20px';
-whatsappBtn.style.right = '20px';
-whatsappBtn.classList.add('btn');
-whatsappBtn.style.color = 'white';
-whatsappBtn.style.width = '60px';
-whatsappBtn.style.height = '60px';
-whatsappBtn.style.borderRadius = '50%';
-whatsappBtn.style.display = 'flex';
-whatsappBtn.style.alignItems = 'center';
-whatsappBtn.style.justifyContent = 'center';
-whatsappBtn.style.fontSize = '30px';
-whatsappBtn.classList.add('whatsapp-float');
-whatsappBtn.style.textDecoration = 'none';
+whatsappBtn.title = 'Falar no WhatsApp'; // Texto ao passar o mouse
+document.body.appendChild(whatsappBtn);
 document.body.appendChild(whatsappBtn);
 </script>
 </body>
 
 </html>
+
 
 
 
