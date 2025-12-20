@@ -358,6 +358,127 @@ footer {
     document.addEventListener('DOMContentLoaded', function() {
         changeLanguage(savedLang);
 </script>
+        <!-- ... código do WhatsApp ... -->
+    <script>
+    const whatsappBtn = document.createElement('a');
+    whatsappBtn.href = 'https://wa.me/258846665748?text=Olá Sidney! Gostaria de informações sobre serviços da CLBA Auto.';
+    whatsappBtn.className = 'whatsapp-float';
+    whatsappBtn.innerHTML = '💬';
+    whatsappBtn.title = 'Falar no WhatsApp';
+    document.body.appendChild(whatsappBtn);
+    </script>
+
+    <!-- === SISTEMA DE TRADUÇÃO (ADICIONE ISSO!) === -->
+    <script>
+    // Sistema de tradução PT/EN
+    const translations = {
+        'pt': {
+            'inicio': 'Início',
+            'servicos': 'Serviços',
+            'sobre': 'Sobre',
+            'contacto': 'Contacto',
+            'titulo': 'CLBA Auto - Mecânica Automotiva em Marracuene',
+            'subtitulo': 'Serviços especializados com qualidade e garantia | Sidney Caetano Chicane',
+            'ligar': 'Ligar: (+258) 846665748',
+            'nossos_servicos': 'Nossos Serviços de Mecânica Automotiva',
+            'manutencao': 'Manutenção',
+            'desc_manutencao': 'Troca de óleo e revisões completas',
+            'reparos': 'Reparos',
+            'desc_reparos': 'Conserto mecânico geral',
+            'eletrica': 'Elétrica',
+            'desc_eletrica': 'Sistema elétrico automotivo',
+            'eletronica': 'Electrónica Automotiva',
+            'desc_eletronica': 'Diagnóstico com Scanner Automotivo',
+            'sobre_titulo': 'Sobre a CLBA Auto - Nossa História',
+            'proprietario': 'Proprietário:',
+            'empresa': 'Empresa:',
+            'endereco': 'Endereço:',
+            'email': 'Email:',
+            'contato_titulo': 'Entre em Contacto - CLBA Auto Marracuene',
+            'copyright': '© 2024 CLBA Auto - Sidney Caetano'
+        },
+        'en': {
+            'inicio': 'Home',
+            'servicos': 'Services',
+            'sobre': 'About',
+            'contacto': 'Contact',
+            'titulo': 'CLBA Auto - Automotive Mechanics in Marracuene',
+            'subtitulo': 'Specialized services with quality and guarantee | Sidney Caetano Chicane',
+            'ligar': 'Call: (+258) 846665748',
+            'nossos_servicos': 'Our Automotive Mechanics Services',
+            'manutencao': 'Maintenance',
+            'desc_manutencao': 'Oil change and complete reviews',
+            'reparos': 'Repairs',
+            'desc_reparos': 'General mechanical repair',
+            'eletrica': 'Electrical',
+            'desc_eletrica': 'Automotive electrical system',
+            'eletronica': 'Automotive Electronics',
+            'desc_eletronica': 'Diagnosis with Automotive Scanner',
+            'sobre_titulo': 'About CLBA Auto - Our History',
+            'proprietario': 'Owner:',
+            'empresa': 'Company:',
+            'endereco': 'Address:',
+            'email': 'Email:',
+            'contato_titulo': 'Contact Us - CLBA Auto Marracuene',
+            'copyright': '© 2024 CLBA Auto - Sidney Caetano'
+        }
+    };
+
+    function changeLanguage(lang) {
+        // Atualizar todos os textos
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        
+        // Atualizar botões ativos
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.textContent.includes(lang === 'pt' ? 'PT' : 'EN')) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Salvar preferência
+        localStorage.setItem('preferred-language', lang);
+    }
+
+    // Carregar idioma salvo ao iniciar
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedLang = localStorage.getItem('preferred-language') || 'pt';
+        changeLanguage(savedLang);
+    });
+    </script>
+    <!-- === FIM DO SISTEMA DE TRADUÇÃO === -->
+
+    <!-- Schema Markup (já existe) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "CLBA Auto",
+        "description": "Oficina mecânica especializada em Marracuene, Moçambique. Serviços: manutenção, reparos, elétrica automotiva, electrónica automotiva.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Habel-Jafar",
+            "addressLocality": "Marracuene",
+            "addressRegion": "Maputo",
+            "addressCountry": "MZ"
+        },
+        "telephone": "+258846665748",
+        "email": "craftlandblackarena@gmail.com",
+        "openingHours": ["Mo-Fr 07:30-18:00", "Sa 08:00-14:00"],
+        "priceRange": "$$",
+        "founder": "Sidney Caetano Chicane",
+        "foundingDate": "2024",
+        "url": "https://sidneychicane-eng.github.io"
+    }
+    </script>
+
+</body>
+</html>
 <body>
     <header class="fade-in">
         <div class="container">
@@ -469,5 +590,6 @@ footer {
     </script>
 </body>
 </html>
+
 
 
