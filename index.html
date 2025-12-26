@@ -285,6 +285,107 @@ footer {
             from { opacity: 0; transform: translateY(20px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
+        /* Container do card do logo */
+.logo-card {
+  --frame-size: min(72vmin, 520px);
+  --glow-color: rgba(0, 200, 255, 0.45);
+  --accent: #00d1ff;
+  --text: #e6f7ff;
+  --bg: #0a0f14;
+
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  background: radial-gradient(120% 120% at 50% 60%, rgba(0,0,0,0.35), transparent 60%),
+              linear-gradient(180deg, rgba(10,15,20,0.9), rgba(10,15,20,0.6));
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Moldura em diamante com brilho */
+.logo-frame {
+  width: var(--frame-size);
+  aspect-ratio: 1 / 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
+}
+
+/* contorno em diamante */
+.logo-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: rotate(45deg);
+  border-radius: 16px;
+  background:
+    conic-gradient(from 0deg, transparent 0 35%, var(--accent) 40% 60%, transparent 65% 100%),
+    radial-gradient(120% 120% at 50% 50%, rgba(0, 209, 255, 0.18), transparent 60%);
+  box-shadow:
+    0 0 22px var(--glow-color),
+    0 0 44px rgba(0, 209, 255, 0.25) inset;
+  pointer-events: none;
+}
+
+/* “fumaça” suave nas bordas */
+.logo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background:
+    radial-gradient(60% 60% at 20% 20%, rgba(255,255,255,0.06), transparent 60%),
+    radial-gradient(50% 50% at 80% 80%, rgba(255,255,255,0.07), transparent 60%);
+  filter: blur(18px);
+  opacity: 0.7;
+  animation: smokeFloat 9s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+@keyframes smokeFloat {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1); opacity: 0.55; }
+  50%  { transform: translate3d(1%, 2%, 0) scale(1.03); opacity: 0.7; }
+  100% { transform: translate3d(3%, -2%, 0) scale(1.06); opacity: 0.5; }
+}
+
+/* Imagem do logo */
+.logo-image {
+  width: 70%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  filter:
+    drop-shadow(0 2px 4px rgba(0,0,0,0.5))
+    drop-shadow(0 8px 24px rgba(0, 209, 255, 0.25));
+  z-index: 1;
+}
+
+/* Legenda */
+.logo-caption {
+  font: 600 1rem/1.2 "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .logo-card { padding: 1.25rem 0.75rem; }
+  .logo-image { width: 78%; }
+}
+
+/* Dark base (caso use tema escuro global) */
+:root {
+  color-scheme: dark;
+}
+
     </style>
 </head>
           <!-- ... conteúdo do site ... -->
@@ -546,6 +647,25 @@ footer {
 </section>
 
     <section id="servicos" class="fade-in">
+        <section id="servicos" aria-label="Serviços">
+  <!-- Bloco do logo CLBA AUTO -->
+  <div class="logo-card" role="img" aria-label="Logo CLBA AUTO com moldura em diamante e efeito de fumaça">
+    <div class="logo-frame">
+      <picture>
+        <source srcset="assets/img/clba-auto-logo.webp" type="image/webp">
+        <img
+          src="assets/img/clba-auto-logo.png"
+          alt="CLBA AUTO: silhueta de carro esportivo sobre engrenagem em moldura de diamante"
+          class="logo-image"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <figcaption class="logo-caption">CLBA AUTO</figcaption>
+  </div>
+</section>
+
         <div class="container">
             <h2 data-i18n="nossos_servicos">Nossos Serviços de Mecânica Automotiva</h2>
             <div class="services-grid">
@@ -626,6 +746,7 @@ footer {
     </script>
 </body>
 </html>
+
 
 
 
